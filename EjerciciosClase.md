@@ -518,3 +518,38 @@ Nota: el curso se aprueba con la nota final igual o mayor a 3.0.
 
 ![image](https://user-images.githubusercontent.com/31961588/189343291-82183144-b84b-4cca-bfc0-d6659c41dd52.png)
 
+**Solución**
+
+```Java
+package notasestudiantes;
+
+public class NotasEstudiantes {
+    public static void main(String[] args) {
+         
+       double[][] notas={ {3.0,4.5,2.5,3.7,0},
+                          {2.0,3.5,5.0,3.9,0},
+                          {3.0,4.6,3.6,3.5,0},
+                          {2.7,5.0,3.7,2.6,0},
+                          {4.8,5.0,3.9,5.0,0},
+                          {2.9,5.0,4.5,3.9,0},
+                          {4.5,4.8,3.8,4.6,0}};
+       imprimir(notas);
+                    
+    }
+    
+    public static void imprimir(double[][] arreglo){
+       
+        for(int i=0;i<arreglo.length;i++){
+             System.out.print("Estudiante: "+i+" notas:  ");
+           for(int j=0;j<arreglo[i].length;j++){
+              System.out.print(arreglo[i][j]+" ");
+           }
+           System.out.println("");
+        }
+    
+    }
+    
+}
+```
+
+
