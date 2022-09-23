@@ -123,3 +123,20 @@ public class Vendedor {
 
 ```
 
+## 2. Tipo número en POO
+
+![image](https://user-images.githubusercontent.com/31961588/191957641-c516b692-b516-4175-9205-28f39659298a.png)
+
+**clase1.java**
+
+```Java
+
+
+```
+
+**clase2.java**
+
+```Java
+
+
+```
