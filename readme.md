@@ -10,7 +10,7 @@
 ## Actividades pendientes
 
 - Quiz para el lunes 22 de Agosto
-- Parcial II lunes 24 de Octubre**
+- Parcial II lunes 24 de Octubre
 
 ## Cronograma de Actividades Académicas del Segundo Semestre del 2022 
 
