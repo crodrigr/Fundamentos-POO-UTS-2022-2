@@ -10,7 +10,7 @@
 ## Actividades pendientes
 
 - Quiz para el lunes 22 de Agosto
-- Parcial va estar programado entre el **5 de 17 de Septiembre**. **Parcial para el 12 de Septiembre día Lunes**
+- Parcial II lunes 24 de Octubre**
 
 ## Cronograma de Actividades Académicas del Segundo Semestre del 2022 
 
