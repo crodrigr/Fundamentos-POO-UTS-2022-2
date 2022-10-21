@@ -328,3 +328,276 @@ public class Vendedor {
 
 
 ```
+# Aplicación de Publicaciones usando herencia
+
+
+**AppLibrary.java**
+
+```Java
+
+package applibrary;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class AppLibrary {
+
+    static Scanner leer=new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        ArrayList<Publicacion> listPublicaciones=new ArrayList<Publicacion>();        
+        Ventas ventas=new Ventas();
+        int opcion=0;
+        do{
+          opcion=menu();
+          
+          switch(opcion){
+              case 1:
+                 crearPublicacion(listPublicaciones);
+              break;
+              case 2:
+                venderProducto(listPublicaciones,ventas);
+              break;
+              case 3:
+                  System.out.println("3.Total de las ventas");
+              break;
+              case 4:
+                 ventas.mostrar();
+              break;
+              case 5:
+                  mostrarTodasPublicaciones(listPublicaciones);
+              break;
+          
+          }         
+        
+        }while(opcion>=1 && opcion<=5);
+              
+    }
+    
+    public static int menu(){
+        System.out.println("______MENU____");
+        System.out.println("1.Crear publicación: libro o disco");
+        System.out.println("2.Vender producto");
+        System.out.println("3.Total de las ventas");
+        System.out.println("4.Listar todas las ventas");
+        System.out.println("5.Mostrar todas las publicaciones");
+        System.out.println("6.Salir");
+        int op=leer.nextInt();
+        return op;
+    }
+    
+    public static void crearPublicacion(ArrayList<Publicacion> list){
+        Publicacion p=null;
+        System.out.println("1.Disco o 2.Libro");
+        int tipo=leer.nextInt();
+        String titulo;
+        float  precio;        
+        System.out.println("Ingrese el titulo: ");
+        titulo=leer.next();
+        System.out.println("Ingrese el precio:");
+        precio=leer.nextFloat();
+        if(tipo==1){
+         float duracion;
+         System.out.println("Ingrese la duración: ");
+         duracion=leer.nextFloat();
+         p=new Disco(duracion,titulo,precio);         
+        }else if(tipo==2){
+          int añoPublicacion;
+          int numPaginas;
+          System.out.println("Ingresar año de publicación: ");
+          añoPublicacion=leer.nextInt();
+          System.out.println("Ingrese el número de paginas: ");
+          numPaginas=leer.nextInt();
+          p=new Libro(numPaginas,añoPublicacion,titulo,precio);
+        }else{
+          p=new Publicacion(titulo,precio);
+        }
+        
+        list.add(p);
+        
+        
+    }
+
+    public static void mostrarTodasPublicaciones(ArrayList<Publicacion> list){
+        int pos=0;
+        for(Publicacion p  : list){
+          System.out.println("Id:"+pos);
+          p.mostrar();
+        }
+        
+    }
+
+    public static void venderProducto(ArrayList<Publicacion> list, Ventas ventas){
+        
+         System.out.println("Seleccione el id del producto a vender: ");
+         mostrarTodasPublicaciones(list);
+         int id=leer.nextInt();
+         Publicacion p=list.get(id);
+         ventas.addPublicacion(p);
+         
+    }
+    
+}
+
+```
+
+**Publicacion.java**
+```Java
+package applibrary;
+
+
+public class Publicacion {
+    
+    private String titulo;
+    private float  precio;
+
+    public Publicacion() {
+    }
+
+    public Publicacion(String titulo, float precio) {
+        this.titulo = titulo;
+        this.precio = precio;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+    
+    public void mostrar(){
+       System.out.println("DATO DE PUBLICACIÓN");
+       System.out.println("Titulo: "+this.titulo);
+       System.out.println("Precio: "+this.precio);
+    }
+    
+}
+
+```
+
+**Libro.java**
+
+```Java
+package applibrary;
+
+
+
+public class Libro extends Publicacion {
+    
+    private int numPaginas;
+    private int añoPublicacion;
+
+    public Libro(int numPaginas, int añoPublicacion, String titulo, float precio) {
+        super(titulo, precio);
+        this.numPaginas = numPaginas;
+        this.añoPublicacion = añoPublicacion;
+    }
+
+    public int getNumPaginas() {
+        return numPaginas;
+    }
+
+    public void setNumPaginas(int numPaginas) {
+        this.numPaginas = numPaginas;
+    }
+
+    public int getAñoPublicacion() {
+        return añoPublicacion;
+    }
+
+    public void setAñoPublicacion(int añoPublicacion) {
+        this.añoPublicacion = añoPublicacion;
+    }
+    
+    @Override
+    public void mostrar(){
+      System.out.println("DATOS LIBRO");
+      System.out.println("Titulo: "+super.getTitulo());
+      System.out.println("Precio: "+super.getPrecio());
+      System.out.println("Número paginas: "+this.numPaginas);
+      System.out.println("Año de publicación: "+this.añoPublicacion);      
+    }
+    
+    
+    
+}
+
+```
+
+**Disco.java**
+```Java
+package applibrary;
+
+public class Disco extends Publicacion {
+    
+    private float duracion;
+
+    public Disco(float duracion, String titulo, float precio) {
+        super(titulo, precio);
+        this.duracion = duracion;
+    }
+
+    public float getDuracion() {
+        return duracion;
+    }
+
+    public void setDuracion(float duracion) {
+        this.duracion = duracion;
+    }
+    
+    
+    @Override
+    public void mostrar(){
+       System.out.println("DATOS DE DISCO");
+       System.out.println("Titulo: "+super.getTitulo());
+       System.out.println("Precio: "+super.getPrecio());
+       System.out.println("Duración: "+this.duracion);
+               
+    }
+    
+    
+    
+}
+
+```
+
+**Ventas.java**
+```Java
+
+package applibrary;
+
+import java.util.ArrayList;
+
+
+public class Ventas {
+    
+    public ArrayList<Publicacion> listVentas;
+    
+    public Ventas(){
+       listVentas=new ArrayList<Publicacion>();
+    }
+    
+    public void addPublicacion(Publicacion publicacion){
+        listVentas.add(publicacion);
+    }
+    
+    public void mostrar(){
+        for(Publicacion p : this.listVentas  ){
+            p.mostrar();
+        }
+    }
+    
+}
+
+```
