@@ -328,7 +328,7 @@ public class Vendedor {
 
 
 ```
-# Aplicación de Publicaciones usando herencia
+#   4. Aplicación de Publicaciones usando herencia
 
 
 **AppLibrary.java**
